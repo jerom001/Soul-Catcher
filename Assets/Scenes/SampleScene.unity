@@ -1143,16 +1143,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb4cbcfa1854124da82b300f743b83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoulPrefab: {fileID: 2904213641721084772, guid: 1eaff1100b6cc6a49b922a9546f6ead8, type: 3}
   minX: -8
   maxX: 8
-  timer: 0
-  soulInterval: 1.03
   spawnHeight: 4.25
+  soulInterval: 2.11
   minSoulInterval: 1
   difficultyIncreaseRate: 0.02
+  normalSoulPrefab: {fileID: 2904213641721084772, guid: 1eaff1100b6cc6a49b922a9546f6ead8, type: 3}
   rareSoulPrefab: {fileID: 2904213641721084772, guid: 40990fddf0a19464b9821c73777fc128, type: 3}
-  soulTaker: {fileID: 6232297493899298468, guid: 739c8d3ab8e34b54faca1ae15be83a58, type: 3}
   rareSoulChance: 0.126
 --- !u!1 &680685304
 GameObject:
@@ -1801,16 +1799,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   lives: 0
-  isGameActive: 0
+  isGameActive: 1
   scoreUi: {fileID: 1501721683}
   skullIcons:
   - {fileID: 1732069702}
   - {fileID: 756874071}
   - {fileID: 6137239}
   gameOverScreen: {fileID: 1016891607}
-  cameraShake: {fileID: 519420033}
   loadingScreen: {fileID: 680685308}
-  loadingTime: 3
+  loadingTime: 0.5
 --- !u!4 &1026739049
 Transform:
   m_ObjectHideFlags: 0
@@ -2486,7 +2483,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2687,7 +2684,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1768, y: 1.1768, z: 1.1768}
+  m_LocalScale: {x: 1.1768, y: 1.1768, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2863,7 +2860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulTakerPrefab: {fileID: 6232297493899298468, guid: 739c8d3ab8e34b54faca1ae15be83a58, type: 3}
-  timer: 0.12
+  timer: 0.5
   minX: -8
   maxX: 8
   soulTakerHeight: 5.6

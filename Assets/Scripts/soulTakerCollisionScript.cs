@@ -5,26 +5,23 @@ using UnityEngine;
 public class soulTakerCollisionScript : MonoBehaviour
 {
     private GameManager gameManager;
+    private bool alreadyHit = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (alreadyHit) return;
+        if (!gameManager.isGameActive) return;
+
         if (other.CompareTag("player"))
         {
+            alreadyHit = true;
             gameManager.DecreaseLives();
             Destroy(gameObject);
-
         }
     }
 }

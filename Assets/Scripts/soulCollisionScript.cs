@@ -1,31 +1,30 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class soulCollisionScript : MonoBehaviour
 {
     private GameManager gameManager;
     public GameObject floatingTextPrefab;
+    private bool alreadyCollided = false;
 
     void Awake()
     {
         gameManager = FindAnyObjectByType<GameManager>();
     }
 
-
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!gameManager.isGameActive) return;
+        if (alreadyCollided) return;
 
         if (other.CompareTag("player"))
         {
-            SoulType soulType = GetComponent<SoulType>();
-            PlayParticles();
+            alreadyCollided = true;
 
-            if (soulType != null)
+            if (gameManager.isGameActive)
             {
-                if (soulType.isHealing)
+                SoulType soulType = GetComponent<SoulType>();
+
+                if (soulType != null && soulType.isHealing)
                 {
                     if (gameManager.lives < gameManager.skullIcons.Length)
                     {
@@ -33,49 +32,27 @@ public class soulCollisionScript : MonoBehaviour
                         gameManager.skullIcons[gameManager.lives - 1].SetActive(true);
                         ShowFloatingText("+1 Life", Color.green);
                     }
-                    else
-                    {
-                        Debug.Log("💚 Healing soul caught, but already at max lives.");
-                    }
                 }
-                else if (soulType.isDamage)
-                {
-                    gameManager.DecreaseLives();
-                    ShowFloatingText("-1 Life", Color.red);
-                    StartCoroutine(cameraShaker.instance.Shake(0.1f, 0.05f));
-                }
-                else // Normal soul
+                else
                 {
                     gameManager.IncreaseScore(1);
                     ShowFloatingText("+1", Color.white);
                 }
             }
-            else // SoulType is missing — assume it's a normal soul
-            {
-                gameManager.IncreaseScore(1);
-                ShowFloatingText("+1", Color.white);
-            }
 
-            // ✅ Always play audio + destroy after interaction
-            AudioSource audio = GetComponent<AudioSource>();
-            if (audio != null && audio.clip != null)
-            {
-                audio.Play();
-                Destroy(gameObject, 0.2f);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
         else if (other.CompareTag("Bottom"))
         {
-            gameManager.DecreaseLives();
-            StartCoroutine(cameraShaker.instance.Shake(0.1f, 0.05f));
-            Debug.Log("💀 Soul missed. Life lost!");
+            alreadyCollided = true;
+
+            if (gameManager.isGameActive)
+            {
+                gameManager.DecreaseLives();
+            }
+
             Destroy(gameObject);
         }
-
     }
 
     void ShowFloatingText(string text, Color color)
@@ -87,16 +64,4 @@ public class soulCollisionScript : MonoBehaviour
             floating.SetText(text, color);
         }
     }
-
-    public GameObject collectParticles;
-
-    void PlayParticles()
-    {
-        if (collectParticles != null)
-        {
-            GameObject fx = Instantiate(collectParticles, transform.position, Quaternion.identity);
-            Destroy(fx, 1f); // destroy after a second
-        }
-    }
-
 }

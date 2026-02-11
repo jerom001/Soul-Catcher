@@ -5,6 +5,5 @@ using UnityEngine;
 public class SoulType : MonoBehaviour
 {
     public bool isHealing = false;
-    public bool isDamage = false;
 
 }

@@ -5,70 +5,52 @@ using UnityEngine;
 
 public class SoulSpawnScript : MonoBehaviour
 {
-    public GameObject SoulPrefab;
+
     public float minX;
     public float maxX;
-    public float timer = 0f;
-    public float soulInterval = 2;
     public float spawnHeight;
+
+    public float soulInterval = 2f;
     public float minSoulInterval = 0.5f;
     public float difficultyIncreaseRate = 0.02f;
-    public GameObject rareSoulPrefab;
-    public GameObject soulTaker;
-    [Range(0f, 1f)] public float rareSoulChance = 0.1f; // 10% chance
 
+    public GameObject normalSoulPrefab;
+    public GameObject rareSoulPrefab;
+    [Range(0f, 1f)] public float rareSoulChance = 0.1f;
+
+    private float timer;
     private GameManager gameManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
-        enabled = false; // Disable Update initially 
-        StartCoroutine(WaitForGameActive());
+        timer = 0f;
     }
 
-    IEnumerator WaitForGameActive()
-    {
-        yield return new WaitUntil(() => gameManager.isGameActive);
-        yield return new WaitForSeconds(0.1f); // optional delay to let player get ready
-        enabled = true; // now Update can run
-    }
-
-
-    // Update is called once per frame
     void Update()
     {
+        if (!gameManager.isGameActive) return;
+
         timer += Time.deltaTime;
 
         if (timer >= soulInterval)
         {
-            soulSpawn();
+            SpawnSoul();
             timer = 0f;
 
+            if (soulInterval > minSoulInterval)
+                soulInterval -= difficultyIncreaseRate;
         }
-       
-        if (soulInterval > minSoulInterval) 
-        {
-            soulInterval -= difficultyIncreaseRate;
-        }
-
     }
 
-    void soulSpawn()
+    void SpawnSoul()
     {
-        float minDistance = 2f;
-        float soulX = Random.Range(minX, maxX);
-        float soulTakerX;
+        float randomX = Random.Range(minX, maxX);
+        Vector3 spawnPosition = new Vector3(randomX, spawnHeight, 0);
 
-        do
-        {
-            soulTakerX = Random.Range(minX, maxX);
-        } while (Mathf.Abs(soulTakerX - soulX) < minDistance);
+        GameObject prefab =
+            Random.value < rareSoulChance ? rareSoulPrefab : normalSoulPrefab;
 
-        float randomx = Random.Range(minX, maxX);
-        Vector3 spawnPosition = new Vector3 (randomx, spawnHeight, 0);
-
-        GameObject prefabToSpawn = Random.value < rareSoulChance ? rareSoulPrefab : SoulPrefab;
-        Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+        Instantiate(prefab, spawnPosition, Quaternion.identity);
     }
 }
