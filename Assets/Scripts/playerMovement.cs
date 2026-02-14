@@ -8,11 +8,13 @@ public class playerMovement : MonoBehaviour
     public Rigidbody2D rb2D;
     public float minX = -8;
     public float maxX = 8;
+    Animator anim;
 
     private float moveInput;
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -23,6 +25,11 @@ public class playerMovement : MonoBehaviour
             transform.right = Vector3.right;
         else if (moveInput < 0)
             transform.right = Vector3.left;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetTrigger("Attack");
+        }
     }
 
     void FixedUpdate()
