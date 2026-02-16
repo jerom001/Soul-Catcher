@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public Text scoreUi;
     public GameObject[] skullIcons;
     public GameObject gameOverScreen;
-
+    public Text finalScoreText;
     public CanvasGroup loadingScreen;
     public float loadingTime = 2f;
 
@@ -81,7 +81,9 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         isGameActive = false;
+        finalScoreText.text = "Final Score: " + score;
         gameOverScreen.SetActive(true);
+        scoreUi.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 
