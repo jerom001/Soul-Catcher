@@ -28,9 +28,7 @@ public class soulCollisionScript : MonoBehaviour
                 {
                     if (gameManager.lives < gameManager.skullIcons.Length)
                     {
-                        gameManager.lives++;
-                        gameManager.skullIcons[gameManager.lives - 1].SetActive(true);
-                        ShowFloatingText("+1 Life", Color.green);
+                        gameManager.AddLife();
                     }
                 }
                 else

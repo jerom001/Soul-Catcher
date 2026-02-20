@@ -15,9 +15,11 @@ public class GameManager : MonoBehaviour
     public Text finalScoreText;
     public CanvasGroup loadingScreen;
     public float loadingTime = 2f;
+    public GameObject darkOverlay;
 
     void Start()
     {
+        darkOverlay.SetActive(false);
         score = 0;
         lives = skullIcons.Length;
 
@@ -64,12 +66,20 @@ public class GameManager : MonoBehaviour
         {
             lives--;
             skullIcons[lives].SetActive(false);
-            updateUI();
-        }
 
-        if (lives <= 0)
+            if (lives == 0)
+                GameOver();
+        }
+    }
+
+    public void AddLife()
+    {
+        if (!isGameActive) return;
+
+        if (lives < skullIcons.Length)
         {
-            GameOver();
+            skullIcons[lives].SetActive(true);
+            lives++;
         }
     }
 
@@ -80,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
+        darkOverlay.SetActive(true);
         isGameActive = false;
         finalScoreText.text = "Final Score: " + score;
         gameOverScreen.SetActive(true);
