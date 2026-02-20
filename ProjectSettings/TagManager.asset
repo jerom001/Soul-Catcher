@@ -10,7 +10,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Glow
   - Water
   - UI
   - 
@@ -48,6 +48,9 @@ TagManager:
     locked: 0
   - name: GamePlay
     uniqueID: 1552551215
+    locked: 0
+  - name: Glow
+    uniqueID: 3486415347
     locked: 0
   m_RenderingLayers:
   - Default
