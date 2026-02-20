@@ -33,23 +33,28 @@ public class SoulSpawnScript : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer >= soulInterval)
-        {
-            SpawnSoul();
-            timer = 0f;
+        float difficultyLevel = gameManager.score;
 
-            if (soulInterval > minSoulInterval)
-                soulInterval -= difficultyIncreaseRate;
+        float dynamicInterval = soulInterval - (difficultyLevel * difficultyIncreaseRate);
+        dynamicInterval = Mathf.Max(minSoulInterval, dynamicInterval);
+
+        if (timer >= dynamicInterval)
+        {
+            SpawnSoul(difficultyLevel);
+            timer = 0f;
         }
     }
 
-    void SpawnSoul()
+    void SpawnSoul(float difficultyLevel)
     {
         float randomX = Random.Range(minX, maxX);
         Vector3 spawnPosition = new Vector3(randomX, spawnHeight, 0);
 
+        float adjustedRareChance = rareSoulChance - (difficultyLevel * 0.01f);
+        adjustedRareChance = Mathf.Clamp(adjustedRareChance, 0.02f, rareSoulChance);
+
         GameObject prefab =
-            Random.value < rareSoulChance ? rareSoulPrefab : normalSoulPrefab;
+            Random.value < adjustedRareChance ? rareSoulPrefab : normalSoulPrefab;
 
         Instantiate(prefab, spawnPosition, Quaternion.identity);
     }
