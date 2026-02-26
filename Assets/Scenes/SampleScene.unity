@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 6137240}
   - component: {fileID: 6137242}
   - component: {fileID: 6137241}
+  - component: {fileID: 6137243}
   m_Layer: 3
   m_Name: Life3
   m_TagString: Untagged
@@ -196,6 +197,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6137239}
   m_CullTransparentMesh: 1
+--- !u!114 &6137243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6137239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &275411121
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,12 +494,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   musicSource: {fileID: 1856464858}
   sfxSource: {fileID: 1763935609}
-  mainMenuMusic: {fileID: 8300000, guid: 816b6eab58d24c646a55f35fb63b0f1f, type: 3}
-  gamePlayMusic: {fileID: 8300000, guid: a58ebb6b96373894cabcc6e3484b3533, type: 3}
+  mainMenuMusic: {fileID: 8300000, guid: 83737c17f408c034b8dfe0f65c37e4c5, type: 3}
+  gamePlayMusic: {fileID: 8300000, guid: 456758da3a72f45418e5e847425ecee1, type: 3}
   pointSFX: {fileID: 8300000, guid: 1ac294c1b3c1cb14e8c8dc3ef03a538a, type: 3}
   damageSFX: {fileID: 8300000, guid: f2f1bccbd6909f94c813b18182c48b0f, type: 3}
   healSFX: {fileID: 8300000, guid: e49ff9c1896072e4f9cc62367d000c60, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: f8cab9ed881c12249b7c8b4795964bdd, type: 3}
+  buttonClickSFX: {fileID: 8300000, guid: ce4e9ec684488f142810159512785be0, type: 3}
 --- !u!4 &281881854
 Transform:
   m_ObjectHideFlags: 0
@@ -1796,6 +1812,7 @@ GameObject:
   - component: {fileID: 756874072}
   - component: {fileID: 756874074}
   - component: {fileID: 756874073}
+  - component: {fileID: 756874075}
   m_Layer: 3
   m_Name: Life2
   m_TagString: Untagged
@@ -1862,6 +1879,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756874071}
   m_CullTransparentMesh: 1
+--- !u!114 &756874075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756874071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &799866008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2352,6 +2384,7 @@ GameObject:
   - component: {fileID: 1002833788}
   - component: {fileID: 1002833787}
   - component: {fileID: 1002833786}
+  - component: {fileID: 1002833789}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -2485,6 +2518,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002833784}
   m_CullTransparentMesh: 1
+--- !u!114 &1002833789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002833784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1016891607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2545,7 @@ GameObject:
   - component: {fileID: 1016891610}
   - component: {fileID: 1016891609}
   - component: {fileID: 1016891611}
+  - component: {fileID: 1016891612}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -2582,6 +2631,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
   m_EffectColor: {r: 0.15718755, g: 0.21128687, b: 0.3735848, a: 0.8117647}
   m_EffectDistance: {x: 3, y: -3.6}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1016891612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016891607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: -5}
   m_UseGraphicAlpha: 1
 --- !u!1 &1026739047
 GameObject:
@@ -3450,6 +3514,7 @@ GameObject:
   - component: {fileID: 1501721682}
   - component: {fileID: 1501721684}
   - component: {fileID: 1501721683}
+  - component: {fileID: 1501721685}
   m_Layer: 5
   m_Name: 'ScoreText '
   m_TagString: Untagged
@@ -3502,7 +3567,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 74
+    m_MaxSize: 118
     m_Alignment: 3
     m_AlignByGeometry: 1
     m_RichText: 1
@@ -3518,6 +3583,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501721681}
   m_CullTransparentMesh: 1
+--- !u!114 &1501721685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501721681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1532110975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4433,6 +4513,7 @@ GameObject:
   - component: {fileID: 1732069703}
   - component: {fileID: 1732069705}
   - component: {fileID: 1732069704}
+  - component: {fileID: 1732069706}
   m_Layer: 3
   m_Name: Life1
   m_TagString: Untagged
@@ -4499,6 +4580,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732069702}
   m_CullTransparentMesh: 1
+--- !u!114 &1732069706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732069702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1741891399
 GameObject:
   m_ObjectHideFlags: 0

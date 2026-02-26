@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public CanvasGroup loadingScreen;
     public float loadingTime = 2f;
     public GameObject darkOverlay;
+    private cameraShaker cameraShaker;
+    private Coroutine scorePopRoutine;
 
     void Start()
     {
@@ -29,6 +31,8 @@ public class GameManager : MonoBehaviour
 
         isGameActive = false;
         StartCoroutine(StartGameSequence());
+        cameraShaker = Camera.main.GetComponent<cameraShaker>();
+
     }
 
     IEnumerator StartGameSequence()
@@ -60,7 +64,27 @@ public class GameManager : MonoBehaviour
         score += amount;
         updateUI();
 
+        if (scorePopRoutine != null)
+            StopCoroutine(scorePopRoutine);
+
+        scorePopRoutine = StartCoroutine(ScorePop());
+
         AudioManager.Instance.PlaySFX(AudioManager.Instance.pointSFX);
+    }
+    IEnumerator ScorePop()
+    {
+        float duration = 0.1f;
+        float timer = 0f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float scale = Mathf.Lerp(1.2f, 1f, timer / duration);
+            scoreUi.transform.localScale = Vector3.one * scale;
+            yield return null;
+        }
+
+        scoreUi.transform.localScale = Vector3.one;
     }
 
     public void DecreaseLives()
@@ -73,6 +97,7 @@ public class GameManager : MonoBehaviour
             skullIcons[lives].SetActive(false);
 
             AudioManager.Instance.PlaySFX(AudioManager.Instance.damageSFX);
+            StartCoroutine(cameraShaker.Shake(0.1f, 0.06f));
 
             if (lives == 0)
                 GameOver();
@@ -99,12 +124,32 @@ public class GameManager : MonoBehaviour
 
     void GameOver()
     {
-        darkOverlay.SetActive(true);
+        if (!isGameActive) return;
+
         isGameActive = false;
+        StartCoroutine(GameOverSequence());
+    }
+    IEnumerator GameOverSequence()
+    {
+        // Slow motion impact
+        Time.timeScale = 0.3f;
+
+        StartCoroutine(cameraShaker.Shake(0.2f, 0.1f));
+
+        yield return new WaitForSecondsRealtime(0.25f);
+
+        Time.timeScale = 0f;
+
+        darkOverlay.SetActive(true);
         finalScoreText.text = "Final Score: " + score;
         gameOverScreen.SetActive(true);
         scoreUi.gameObject.SetActive(false);
-        Time.timeScale = 0;
+    }
+    IEnumerator SlowMoGameOver()
+    {
+        Time.timeScale = 0.3f;
+        yield return new WaitForSecondsRealtime(0.2f);
+        Time.timeScale = 0f;
     }
 
     public void RestartGame()
