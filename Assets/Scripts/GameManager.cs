@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForFixedUpdate();
 
         isGameActive = true;
+
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.gamePlayMusic);
+
     }
 
     public void IncreaseScore(int amount)
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour
 
         score += amount;
         updateUI();
+
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.pointSFX);
     }
 
     public void DecreaseLives()
@@ -66,6 +71,8 @@ public class GameManager : MonoBehaviour
         {
             lives--;
             skullIcons[lives].SetActive(false);
+
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.damageSFX);
 
             if (lives == 0)
                 GameOver();
@@ -80,6 +87,8 @@ public class GameManager : MonoBehaviour
         {
             skullIcons[lives].SetActive(true);
             lives++;
+
+            AudioManager.Instance.PlaySFX (AudioManager.Instance.healSFX);
         }
     }
 
