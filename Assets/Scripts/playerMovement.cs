@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86;
 
 public class playerMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class playerMovement : MonoBehaviour
     public float minX = -8;
     public float maxX = 8;
     Animator anim;
+    private Coroutine glowRoutine;
 
     private float moveInput;
     void Start()
@@ -39,4 +41,25 @@ public class playerMovement : MonoBehaviour
         float clampedX = Mathf.Clamp(rb2D.position.x, minX, maxX);
         rb2D.position = new Vector2(clampedX, rb2D.position.y);
     }
+
+    public void TriggerGlow()
+    {
+        if (glowRoutine != null)
+            StopCoroutine(glowRoutine);
+
+        glowRoutine = StartCoroutine(GlowPulse());
+    }
+
+
+    IEnumerator GlowPulse()
+     {
+         SpriteRenderer sr = GetComponent<SpriteRenderer>();
+         Color original = sr.color;
+
+         sr.color = original * 1.6f;
+
+         yield return new WaitForSeconds(0.1f);
+
+         sr.color = original;
+     }
 }

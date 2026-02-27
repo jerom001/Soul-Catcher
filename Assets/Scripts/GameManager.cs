@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject darkOverlay;
     private cameraShaker cameraShaker;
     private Coroutine scorePopRoutine;
+    public GameObject blueSoulBurstPrefab;
 
     void Start()
     {
@@ -57,20 +58,25 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void IncreaseScore(int amount)
+    public void IncreaseScore(int amount, Vector3 spawnPosition)
     {
         if (!isGameActive) return;
 
         score += amount;
         updateUI();
 
+        if (blueSoulBurstPrefab != null)
+        {
+            GameObject effect = Instantiate(blueSoulBurstPrefab, spawnPosition, Quaternion.identity);
+            Destroy(effect, 1f);
+        }
         if (scorePopRoutine != null)
             StopCoroutine(scorePopRoutine);
 
         scorePopRoutine = StartCoroutine(ScorePop());
-
         AudioManager.Instance.PlaySFX(AudioManager.Instance.pointSFX);
     }
+
     IEnumerator ScorePop()
     {
         float duration = 0.1f;
@@ -78,7 +84,7 @@ public class GameManager : MonoBehaviour
 
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             float scale = Mathf.Lerp(1.2f, 1f, timer / duration);
             scoreUi.transform.localScale = Vector3.one * scale;
             yield return null;

@@ -29,12 +29,18 @@ public class soulCollisionScript : MonoBehaviour
                     if (gameManager.lives < gameManager.skullIcons.Length)
                     {
                         gameManager.AddLife();
+                        ShowFloatingText("+1", Color.green);
                     }
                 }
                 else
                 {
-                    gameManager.IncreaseScore(1);
-                    ShowFloatingText("+1", Color.white);
+                    gameManager.IncreaseScore(1, transform.position);
+                    playerMovement player = other.GetComponent<playerMovement>();
+                    if (player != null)
+                    {
+                        player.TriggerGlow();
+                    }
+                    ShowFloatingText("1", Color.white);
                 }
             }
 
@@ -61,5 +67,6 @@ public class soulCollisionScript : MonoBehaviour
             FloatingText floating = ft.GetComponent<FloatingText>();
             floating.SetText(text, color);
         }
+
     }
 }
