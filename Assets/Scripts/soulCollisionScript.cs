@@ -4,7 +4,6 @@ using UnityEngine;
 public class soulCollisionScript : MonoBehaviour
 {
     private GameManager gameManager;
-    public GameObject floatingTextPrefab;
     private bool alreadyCollided = false;
 
     void Awake()
@@ -28,8 +27,7 @@ public class soulCollisionScript : MonoBehaviour
                 {
                     if (gameManager.lives < gameManager.skullIcons.Length)
                     {
-                        gameManager.AddLife();
-                        ShowFloatingText("+1", Color.green);
+                        gameManager.AddLife(transform.position);
                     }
                 }
                 else
@@ -40,7 +38,6 @@ public class soulCollisionScript : MonoBehaviour
                     {
                         player.TriggerGlow();
                     }
-                    ShowFloatingText("1", Color.white);
                 }
             }
 
@@ -58,15 +55,5 @@ public class soulCollisionScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    void ShowFloatingText(string text, Color color)
-    {
-        if (floatingTextPrefab != null)
-        {
-            GameObject ft = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
-            FloatingText floating = ft.GetComponent<FloatingText>();
-            floating.SetText(text, color);
-        }
-
-    }
+  
 }

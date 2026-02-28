@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         StartCoroutine(StartGameSequence());
         cameraShaker = Camera.main.GetComponent<cameraShaker>();
-
     }
 
     IEnumerator StartGameSequence()
@@ -64,7 +63,6 @@ public class GameManager : MonoBehaviour
 
         score += amount;
         updateUI();
-
         if (blueSoulBurstPrefab != null)
         {
             GameObject effect = Instantiate(blueSoulBurstPrefab, spawnPosition, Quaternion.identity);
@@ -110,7 +108,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddLife()
+    public void AddLife(Vector3 spawnPosition)
     {
         if (!isGameActive) return;
 
@@ -163,4 +161,5 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-}
+
+ }
