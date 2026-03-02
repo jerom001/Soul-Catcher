@@ -11,10 +11,9 @@ public class soulTakerScript : MonoBehaviour
     public float maxX;
     public float soulTakerHeight;
 
-
-
     void Start()
     {
+        soulTakerInterval = Random.Range(5f, 10f);
 
     }
 
@@ -40,5 +39,4 @@ public class soulTakerScript : MonoBehaviour
 
     }
 
-    
 }

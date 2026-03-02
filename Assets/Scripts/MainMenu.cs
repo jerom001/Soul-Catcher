@@ -18,11 +18,10 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public GameObject loadingScreen; // Your UI Panel with animated text
-
+    public GameObject loadingScreen;
     public void LoadGameScene()
     {
-        loadingScreen.SetActive(true); // Show the loading screen
+        loadingScreen.SetActive(true);
         StartCoroutine(LoadSceneAsync());
     }
 
@@ -30,7 +29,7 @@ public class MainMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
-        AsyncOperation op = SceneManager.LoadSceneAsync("SampleScene"); // Change name accordingly
+        AsyncOperation op = SceneManager.LoadSceneAsync("SampleScene");
 
         while (!op.isDone)
         {

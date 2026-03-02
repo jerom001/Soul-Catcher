@@ -24,11 +24,20 @@ public class SoulSpawnScript : MonoBehaviour
     void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
+
+        if (gameManager == null)
+        {
+            Debug.LogError("[SoulSpawnScript] GameManager not found in scene.");
+            enabled = false;
+            return;
+        }
+
         timer = 0f;
     }
 
     void Update()
     {
+        if (gameManager == null) return;
         if (!gameManager.isGameActive) return;
 
         timer += Time.deltaTime;

@@ -31,12 +31,14 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
+        if (musicSource == null || clip == null) return;
         musicSource.clip = clip;
         musicSource.Play();
     }
 
     public void PlaySFX(AudioClip clip)
     {
+        if (sfxSource == null || clip == null) return;
         sfxSource.PlayOneShot(clip);
     }
 
