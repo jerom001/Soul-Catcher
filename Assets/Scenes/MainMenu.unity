@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 5, y: -5}
+  m_EffectDistance: {x: 2, y: -5}
   m_UseGraphicAlpha: 1
 --- !u!1 &332706382
 GameObject:
@@ -303,7 +303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: -350}
+  m_AnchoredPosition: {x: 30, y: -461}
   m_SizeDelta: {x: 1571.1, y: 85.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332706384
@@ -350,14 +350,14 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3406097407
-  m_fontColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 0.79607844}
+    rgba: 2566914047
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.59607846}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 0.03396219, g: 0.032744676, b: 0.032744676, a: 1}
+    topRight: {r: 0.96113825, g: 1, b: 0.84339625, a: 1}
+    bottomLeft: {r: 0.2754717, g: 0.05769313, b: 0.05769313, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 63.41
   m_fontStyle: 16
   m_HorizontalAlignment: 16
   m_VerticalAlignment: 1024
@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 377458332}
   - component: {fileID: 377458334}
   - component: {fileID: 377458333}
+  - component: {fileID: 377458335}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -500,6 +501,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377458331}
   m_CullTransparentMesh: 1
+--- !u!114 &377458335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377458331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &563478822
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +753,7 @@ GameObject:
   - component: {fileID: 866099119}
   - component: {fileID: 866099121}
   - component: {fileID: 866099120}
+  - component: {fileID: 866099122}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -805,6 +822,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866099118}
   m_CullTransparentMesh: 1
+--- !u!114 &866099122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866099118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &954514102
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,14 +979,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 0.949, a: 1}
+  m_Color: {r: 0.90943396, g: 0.90943396, b: 0.90943396, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -339024801677531561, guid: ded992eb98b07824ab8ae3e70976e36d, type: 3}
+  m_Sprite: {fileID: -1097915362942183213, guid: 020830b32881ec442b3838f9dd6cbaa8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1477,7 +1509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Shadow
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
-  m_EffectDistance: {x: 5, y: -5}
+  m_EffectDistance: {x: 2, y: -5}
   m_UseGraphicAlpha: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

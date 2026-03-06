@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class SoulSpawnScript : MonoBehaviour
 {
-
     public float minX;
     public float maxX;
     public float spawnHeight;

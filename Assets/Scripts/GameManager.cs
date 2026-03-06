@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
             cameraShaker = null;
         }
     }
-
     IEnumerator StartGameSequence()
     {
         float timer = 0f;
